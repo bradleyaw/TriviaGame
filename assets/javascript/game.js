@@ -29,18 +29,15 @@ function questionInsert() {
 $(".button").on("click", function () {
     $(".questionCont").html("&nbsp")
     var timer = setTimeout(function () {
-        alert("5 seconds have passed");
-    }, 5 * 1000);
+        $(".questionCont").html('Questions answered correctly: ' + qRight + "<br>" +
+                                'Questions answered incorrectly: ' + qWrong + "<br>" +
+                                'Questions left unanswered: ' + noAnswer + "<br>")
+    }, 30 * 1000);
     var timer2 = setInterval(decrement, 1000)
     function decrement() {
         if (seconds > 0) {
             seconds--;
             $(".countdown").html(seconds);
-        }
-        else {
-            $(".questionCont").html('Questions answered correctly: ' + qRight + "<br>" +
-                'Questions answered incorrectly: ' + qWrong + "<br>" +
-                'Questions left unanswered: ' + noAnswer + "<br>")
         }
     }
     for (var i = 0; i < Qs.length; i++) {
@@ -62,7 +59,6 @@ $(".button").on("click", function () {
     }
     $(".questionCont").append('<div><button class="button2">Done</button></div>')
     $(".button2").on("click", function () {
-        console.log("Hey");
         clearTimeout(timer);
         clearInterval(timer2);
         $(".questionCont").html('Questions answered correctly: ' + qRight + "<br>" +
